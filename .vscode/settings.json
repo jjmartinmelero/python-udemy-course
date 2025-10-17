@@ -1,0 +1,21 @@
+{
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+
+    // Configuración específica para Python
+    "[python]": {
+        "editor.defaultFormatter": "ms-python.python",
+        "editor.formatOnSave": true
+    },
+
+    // Recomendamos usar Black como formateador para Python
+    "python.formatting.provider": "black",
+    "python.formatting.blackArgs": [
+        "--line-length",
+        "88"
+    ],
+
+    // Asegura que el linter esté habilitado (opcional)
+    "python.linting.enabled": true,
+    "python.linting.pylintEnabled": true
+}
