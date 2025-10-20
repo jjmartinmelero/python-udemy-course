@@ -44,3 +44,54 @@ print(name3)
 ## bool
 isUser = True
 isWoman = False
+
+# special characters
+print("Hello \n world")
+print("Hello \t world")
+print("Hello ' world")
+print("Hello \" world")
+
+# concat str
+str1 = "hello"
+str2 = "world"
+
+concat = str1 + " " + str2
+
+print(concat)
+
+# concat with join
+concat = "".join([str1," ",str2])
+
+# format str
+name = "Juan Jesus"
+age = 31
+
+message = "Hi, my name is {} and {} years old".format(name, age)
+print(message)
+
+# f str
+message = f'Hi, my name is {name} and {age} years old'
+print(message)
+
+# len str
+print(len(message))
+
+# upperCase lowerCase
+upper = message.upper()
+lower = message.lower()
+print(upper)
+print(lower)
+
+# sub str
+substr = message[0: 25]
+print(substr)
+
+# input fn
+
+name = input("Your name: ")
+print(f"Name: {name}")
+
+
+age = int(input("Your age: "))
+print(f"age: {age}")
+
