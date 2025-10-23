@@ -18,3 +18,8 @@ class Company:
                 n_employees += 1
                 
         return n_employees
+
+    def show_all_employees(self):
+        print(f"\nAll employees in {self.name}")
+        for employee in self.__employees:
+            print(f"Employe id: {employee.id} with name {employee._name}")

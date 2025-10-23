@@ -10,3 +10,6 @@ company.add_employee("FF", "dp2")
 
 print(company.get_employees_by_department("dp1"))
 print(f"employees: {Employee.get_total_employees()}")
+
+# Show all employees:
+company.show_all_employees()
