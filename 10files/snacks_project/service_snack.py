@@ -7,8 +7,9 @@ class SnackService:
 
     def __init__(self):
         self.snacks = []
+
         if os.path.isfile(self.FILE_NAME):
-            self.snacks = self.get_snacks()
+            self.snacks = self.load_snacks()
         else: 
             self.load_initial_snacks()
 
@@ -30,7 +31,7 @@ class SnackService:
         except Exception as e:
             print(f'Error {e}')
 
-    def get_snacks(self):
+    def load_snacks(self):
         snacks = []
 
         print("LOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOAD")
