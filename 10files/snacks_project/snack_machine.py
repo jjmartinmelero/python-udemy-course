@@ -77,7 +77,7 @@ class SnackMachine:
         name = input('snack name: ')
         price = float(input('snack price: '))
         new_snack = Snack(name, price)
-        self.snackService.add_snack(new_snack)
+        self.snack_service.add_snack(new_snack)
         print('Snack added')
 
 
