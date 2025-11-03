@@ -17,8 +17,8 @@ class ClientDAO:
             cursor = conexion.cursor()
             cursor.execute(cls.SELECT)
             results = cursor.fetchall()
-            print(results)
             clients = []
+            
             for result in results:
                 client = Client(result[0], result[1], result[2], result[3])
                 clients.append(client)
@@ -69,6 +69,25 @@ class ClientDAO:
                 cursor.close()
                 Conexion.clear_conexion(conexion)
 
+    @classmethod
+    def delete(cls, client):
+        conexion = None
+
+        try:
+            conexion = Conexion.get_conexion()
+            cursor = conexion.cursor()
+            values = (client.id,)
+            cursor.execute(cls.DELETE, values)
+            conexion.commit()
+
+            return cursor.rowcount
+        except Exception as e:
+            print(f'An error ocurred: {e}') 
+        finally:
+            if conexion is not None:
+                cursor.close()
+                Conexion.clear_conexion(conexion)
+
 if __name__ == '__main__':
     
     # insert a client
@@ -78,6 +97,10 @@ if __name__ == '__main__':
     # update a client
     # client1 = Client(1, name='test update', last_name='test lastname update', membership=333)
     # ClientDAO.update(client1)
+
+    # delete a client
+    # client1 = Client(id=1)
+    # ClientDAO.delete(client1)
 
     # select clients
     clients = ClientDAO.select()
