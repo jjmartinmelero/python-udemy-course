@@ -31,7 +31,57 @@ class ClientDAO:
                 cursor.close()
                 Conexion.clear_conexion(conexion)
 
+    @classmethod
+    def insert(cls, client):
+        conexion = None
+
+        try:
+            conexion = Conexion.get_conexion()
+            cursor = conexion.cursor()
+            values = (client.name, client.last_name, client.membership)
+            cursor.execute(cls.INSERT, values)
+            conexion.commit()
+
+            return cursor.rowcount
+        except Exception as e:
+            print(f'An error ocurred: {e}') 
+        finally:
+            if conexion is not None:
+                cursor.close()
+                Conexion.clear_conexion(conexion)
+
+    @classmethod
+    def update(cls, client):
+        conexion = None
+
+        try:
+            conexion = Conexion.get_conexion()
+            cursor = conexion.cursor()
+            values = (client.name, client.last_name, client.membership, client.id)
+            cursor.execute(cls.UPDATE, values)
+            conexion.commit()
+
+            return cursor.rowcount
+        except Exception as e:
+            print(f'An error ocurred: {e}') 
+        finally:
+            if conexion is not None:
+                cursor.close()
+                Conexion.clear_conexion(conexion)
+
 if __name__ == '__main__':
+    
+    # insert a client
+    # client1 = Client(name='test', last_name='test lastname', membership=123)
+    # ClientDAO.insert(client1)
+
+    # update a client
+    # client1 = Client(1, name='test update', last_name='test lastname update', membership=333)
+    # ClientDAO.update(client1)
+
+    # select clients
     clients = ClientDAO.select()
     for client in clients:
         print(client)
+
+    
