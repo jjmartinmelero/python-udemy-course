@@ -25,14 +25,17 @@ def home():
 
 @app.route('/save', methods=['POST'])
 def save():
-    print('SAVE METHOD')
     client = Client()
     client_form = ClientForm(obj=client)
     # print(client_form.errors)
 
     if client_form.validate_on_submit():
         client_form.populate_obj(client)
-        ClientDAO.insert(client)
+        
+        if not client.id:
+            ClientDAO.insert(client)
+        else:
+            ClientDAO.update(client)
 
     return redirect(url_for('home'))
 
@@ -48,6 +51,13 @@ def edit(id):
     clients_db = ClientDAO.select()
 
     return render_template('index.html', title=title_app, clients=clients_db, client_form=client_form)
+
+@app.route('/delete/<int:id>')
+def delete(id):
+    client = Client(id)
+    ClientDAO.delete(client)
+
+    return redirect(url_for('home'))
 
 
 if __name__ == '__main__':

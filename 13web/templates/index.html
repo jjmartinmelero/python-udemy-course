@@ -29,7 +29,7 @@
       <div class="d-grid gap-3" style="grid-template-columns: 1fr 2fr">
         <div class="border rounded-3 p-2">
           <form action="/save" method="post" autocomplete="off">
-            {{client_form.csrf_token}}
+            {{client_form.csrf_token}} {{client_form.id}}
             <div class="form-floating py-2">
               {{client_form.name(class="form-control", placeholer="Name")}}
               {{client_form.name.label}}
