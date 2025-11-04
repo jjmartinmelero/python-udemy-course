@@ -29,14 +29,9 @@
       <div class="d-grid gap-3" style="grid-template-columns: 1fr 2fr">
         <div class="border rounded-3 p-2">
           <form action="/save" method="POST" autocomplete="off">
+            <!-- {{client_form.csrf_token}} -->
             <div class="form-floating py-2">
-              <input
-                type="text"
-                class="form-control"
-                id="name"
-                placeholder="name"
-              />
-              <label for="name">Name</label>
+              <!-- {{client_form.name}} -->
             </div>
             <div class="form-floating py-2">
               <input
@@ -55,6 +50,12 @@
                 placeholder="membership"
               />
               <label for="membership">Membership</label>
+            </div>
+            <div class="text-center py-2">
+                <button type="submit" class="btn btn-warning btn-sm mr-3">
+                    Save
+                </button>
+                <input type="reset" class="btn btn-danger btn-sm" value="Clear">
             </div>
           </form>
         </div>
